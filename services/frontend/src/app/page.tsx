@@ -1,0 +1,135 @@
+"use client";
+import { CounterView } from "@/components/Counter/Counter";
+import styles from "./page.module.css";
+import Modal from "@/components/Modal/Modal";
+import { useState } from "react";
+import { Counter } from "@/api/api";
+import { MinusIcon, PlusIcon } from "lucide-react";
+
+export default function Home() {
+  const initialCounters = [
+    {
+      name: "Autos",
+      id: "test",
+      color: "green",
+      count: 0,
+      stepSize: 1,
+      locked: false,
+      icon: {
+        id: "q",
+        color: "red",
+      },
+    },
+    {
+      name: "Häuser",
+      id: "test2",
+      color: "red",
+      count: 0,
+      stepSize: 2,
+      locked: false,
+      icon: {
+        id: "q",
+        color: "red",
+      },
+    },
+    {
+      name: "Bäume",
+      id: "test3",
+      color: "blue",
+      count: 0,
+      stepSize: 1,
+      locked: false,
+      icon: {
+        id: "q",
+        color: "red",
+      },
+    },
+    {
+      name: "Bäume",
+      id: "test4",
+      color: "orange",
+      count: 0,
+      stepSize: 1,
+      locked: false,
+      icon: {
+        id: "q",
+        color: "red",
+      },
+    },
+  ];
+
+  const [counters, setCounters] = useState(initialCounters);
+  const [modalOpen, setModalOpen] = useState(false);
+  const [openedCounter, setOpenedCounter] = useState<Counter>();
+
+  const updateCounter = (counterId: string, increment: boolean) => {
+    setCounters((prevCounters) =>
+      prevCounters.map((counter) => {
+        if (counter.id === counterId && !counter.locked) {
+          const newCount = increment
+            ? counter.count + counter.stepSize
+            : Math.max(0, counter.count - counter.stepSize); // Prevent negative counts
+
+          const updatedCounter = { ...counter, count: newCount };
+
+          if (openedCounter?.id === counterId) {
+            setOpenedCounter(updatedCounter);
+          }
+          return updatedCounter;
+        }
+        return counter;
+      }),
+    );
+  };
+
+  const handlePlus = () => {
+    if (openedCounter) {
+      updateCounter(openedCounter.id, true);
+    }
+  };
+
+  const handleMinus = () => {
+    if (openedCounter) {
+      updateCounter(openedCounter.id, false);
+    }
+  };
+
+  return (
+    <div className={styles.page}>
+      <Modal
+        isOpen={modalOpen}
+        title={openedCounter?.name}
+        onClose={() => {
+          setModalOpen(false);
+        }}
+        backgroundColor="red"
+      >
+        <div className={styles.counterModal}>
+          <h1>{openedCounter?.count}</h1>
+          <div className={styles.counterButtons}>
+            <button onClick={handleMinus}>
+              <MinusIcon />
+            </button>
+            <button onClick={handlePlus}>
+              <PlusIcon />
+            </button>
+          </div>
+        </div>
+      </Modal>
+
+      <div className={styles.container}>
+        {counters.map((counter) => (
+          <div key={counter.id} className={styles.counterItem}>
+            <CounterView
+              counter={counter}
+              onClick={() => {
+                setOpenedCounter(counter);
+                setModalOpen(true);
+              }}
+            />
+          </div>
+        ))}
+      </div>
+    </div>
+  );
+}
