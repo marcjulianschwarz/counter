@@ -217,3 +217,60 @@
             100%
     ) !important;
 }
+
+.green-modal-bg {
+    --base-lightness: 60%;
+    --base-chroma: 0.1;
+    --base-hue: 144.92;
+    background: radial-gradient(
+        circle 500px at center 10%,
+        oklch(
+                calc(var(--base-lightness) - 50%) var(--base-chroma)
+                    var(--base-hue)
+            )
+            0%,
+        oklch(
+                calc(var(--base-lightness) - 20%) var(--base-chroma)
+                    var(--base-hue)
+            )
+            100%
+    ) !important;
+}
+
+.blue-modal-bg {
+    --base-lightness: 60%;
+    --base-chroma: 0.1;
+    --base-hue: 260.17;
+    background: radial-gradient(
+        circle 500px at center 10%,
+        oklch(
+                calc(var(--base-lightness) - 50%) var(--base-chroma)
+                    var(--base-hue)
+            )
+            0%,
+        oklch(
+                calc(var(--base-lightness) - 20%) var(--base-chroma)
+                    var(--base-hue)
+            )
+            100%
+    ) !important;
+}
+
+.orange-modal-bg {
+    --base-lightness: 60%;
+    --base-chroma: 0.1;
+    --base-hue: 52.18;
+    background: radial-gradient(
+        circle 500px at center 10%,
+        oklch(
+                calc(var(--base-lightness) - 50%) var(--base-chroma)
+                    var(--base-hue)
+            )
+            0%,
+        oklch(
+                calc(var(--base-lightness) - 20%) var(--base-chroma)
+                    var(--base-hue)
+            )
+            100%
+    ) !important;
+}

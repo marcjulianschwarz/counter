@@ -102,7 +102,7 @@ export default function Home() {
         onClose={() => {
           setModalOpen(false);
         }}
-        backgroundColor="red"
+        backgroundColor={openedCounter?.color}
       >
         <div className={styles.counterModal}>
           <h1>{openedCounter?.count}</h1>
