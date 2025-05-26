@@ -5,6 +5,7 @@ import Modal from "@/components/Modal/Modal";
 import { useState } from "react";
 import { Counter } from "@/api/api";
 import { MinusIcon, PlusIcon } from "lucide-react";
+import CounterButton from "@/components/CounterButton/CounterButton";
 
 export default function Home() {
   const initialCounters = [
@@ -60,6 +61,10 @@ export default function Home() {
 
   const [counters, setCounters] = useState(initialCounters);
   const [modalOpen, setModalOpen] = useState(false);
+  const [addModalOpen, setAddModalOpen] = useState(false);
+  const [addName, setAddName] = useState("");
+  const [addStepSize, setAddStepSize] = useState("");
+
   const [openedCounter, setOpenedCounter] = useState<Counter>();
 
   const updateCounter = (counterId: string, increment: boolean) => {
@@ -94,6 +99,27 @@ export default function Home() {
     }
   };
 
+  const handleAddCounter = () => {
+    setCounters([
+      ...counters,
+      {
+        id: addName + new Date(),
+        name: addName,
+        stepSize: parseInt(addStepSize),
+        color: "red",
+        icon: {
+          color: "red",
+          id: "hey",
+        },
+        locked: false,
+        count: 0,
+      },
+    ]);
+    setAddModalOpen(false);
+    setAddName("");
+    setAddStepSize("");
+  };
+
   return (
     <div className={styles.page}>
       <Modal
@@ -117,6 +143,35 @@ export default function Home() {
         </div>
       </Modal>
 
+      <Modal
+        isOpen={addModalOpen}
+        title={addName || "Add Counter"}
+        onClose={() => {
+          setAddModalOpen(false);
+        }}
+      >
+        <form
+          className={styles.addForm}
+          onSubmit={(e) => {
+            e.preventDefault();
+            handleAddCounter();
+          }}
+        >
+          <input
+            placeholder="Name"
+            onChange={(e) => setAddName(e.target.value)}
+            className="c-input"
+          ></input>
+          <input
+            type="number"
+            onChange={(e) => setAddStepSize(e.target.value)}
+            className="c-input"
+            placeholder="1"
+          ></input>
+          <button className="c-button">Add</button>
+        </form>
+      </Modal>
+
       <div className={styles.container}>
         {counters.map((counter) => (
           <div key={counter.id} className={styles.counterItem}>
@@ -129,6 +184,7 @@ export default function Home() {
             />
           </div>
         ))}
+        <CounterButton onClick={() => setAddModalOpen(true)} />
       </div>
     </div>
   );

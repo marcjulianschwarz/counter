@@ -39,3 +39,10 @@
 .counterButtons > button:hover {
     cursor: pointer;
 }
+
+.addForm {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+    width: fit-content;
+}
