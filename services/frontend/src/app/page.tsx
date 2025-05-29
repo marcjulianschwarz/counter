@@ -9,7 +9,7 @@ import CounterButton from "@/components/CounterButton/CounterButton";
 import { ColorPicker } from "@/components/ColorPicker/ColorPicker";
 
 export default function Home() {
-  const initialCounters = [
+  const initialCounters: Counter[] = [
     {
       name: "Autos",
       id: "test",
