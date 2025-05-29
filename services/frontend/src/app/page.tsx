@@ -200,14 +200,27 @@ export default function Home() {
           </form>
           <div className={styles.stylePicker}>
             <ColorPicker
-              colors={["blue", "green", "orange", "red"]}
+              colors={["blue", "green", "orange", "red", "yellow", "purple"]}
               selectedColor={addColor}
               onSelect={setAddColor}
             />
             <IconPicker
-              icons={["car", "house"]}
+              icons={[
+                "car",
+                "house",
+                "lock",
+                "camera",
+                "book",
+                "pencil",
+                "trees",
+                "ruler",
+                "fish",
+                "lamp",
+                "mountain",
+              ]}
               selectedIcon={addIcon}
               onSelect={setAddIcon}
+              color={addColor}
             />
           </div>
         </div>

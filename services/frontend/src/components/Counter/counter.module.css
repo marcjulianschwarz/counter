@@ -14,7 +14,7 @@
 
 /* Only apply hover effects on devices that can actually hover */
 @media (hover: hover) and (pointer: fine) {
-    .container:hover .delete {
+    .container:not(.locked):hover .delete {
         display: flex;
     }
 }

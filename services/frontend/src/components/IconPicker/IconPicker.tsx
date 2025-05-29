@@ -1,4 +1,4 @@
-import { Icon } from "@/api/api";
+import { Color, Icon } from "@/api/api";
 import styles from "./icon-picker.module.css";
 import { IconIcon } from "../IconIcon/IconIcon";
 
@@ -6,6 +6,7 @@ interface IconPickerProps {
   icons: Icon[];
   onSelect?: (icon: Icon) => void;
   selectedIcon?: Icon;
+  color?: Color;
 }
 
 export function IconPicker(props: IconPickerProps) {
@@ -17,7 +18,11 @@ export function IconPicker(props: IconPickerProps) {
           onClick={() => props.onSelect?.(icon)}
           className={styles.iconContainer}
         >
-          <IconIcon icon={icon} selected={icon === props.selectedIcon} />
+          <IconIcon
+            icon={icon}
+            selected={icon === props.selectedIcon}
+            color={props.color}
+          />
         </div>
       ))}
     </div>

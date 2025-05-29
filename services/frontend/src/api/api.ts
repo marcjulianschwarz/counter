@@ -1,3 +1,5 @@
+import { IconName } from "lucide-react/dynamic";
+
 export interface Counter {
   id: string;
   name: string;
@@ -12,5 +14,5 @@ export interface Settings {
   clickSound: boolean;
 }
 
-export type Color = "red" | "green" | "blue" | "orange";
-export type Icon = "house" | "car" | "lock";
+export type Color = "red" | "green" | "blue" | "orange" | "yellow" | "purple";
+export type Icon = IconName;
