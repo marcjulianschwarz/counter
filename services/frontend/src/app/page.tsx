@@ -52,6 +52,7 @@ export default function Home() {
   const [counters, setCounters] = useState(initialCounters);
   const [modalOpen, setModalOpen] = useState(false);
   const [addModalOpen, setAddModalOpen] = useState(false);
+  const [isEditMode, setIsEditMode] = useState(false);
   const [addName, setAddName] = useState("");
   const [addStepSize, setAddStepSize] = useState("");
   const [addColor, setAddColor] = useState<Color>("blue");
@@ -100,18 +101,31 @@ export default function Home() {
   };
 
   const handleAddCounter = () => {
-    setCounters([
-      ...counters,
-      {
-        id: addName + new Date(),
-        name: addName,
-        stepSize: parseInt(addStepSize),
-        color: addColor,
-        icon: addIcon,
-        locked: false,
-        count: 0,
-      },
-    ]);
+    if (isEditMode) {
+      if (openedCounter) {
+        updateCounter(openedCounter.id, {
+          name: addName,
+          stepSize: parseInt(addStepSize),
+          color: addColor,
+          icon: addIcon,
+        });
+      }
+    } else {
+      setCounters([
+        ...counters,
+        {
+          id: addName + new Date(),
+          name: addName,
+          stepSize: parseInt(addStepSize),
+          color: addColor,
+          icon: addIcon,
+          locked: false,
+          count: 0,
+        },
+      ]);
+    }
+
+    setIsEditMode(false);
     setAddModalOpen(false);
     setAddName("");
     setAddStepSize("");
@@ -128,7 +142,16 @@ export default function Home() {
     setModalOpen(true);
   };
 
-  const handleEditCounter = () => {};
+  const handleEditCounter = () => {
+    if (!openedCounter || openedCounter.locked) return;
+    setAddName(openedCounter.name);
+    setAddStepSize(openedCounter.stepSize.toString());
+    setAddColor(openedCounter.color);
+    setAddIcon(openedCounter.icon);
+    setModalOpen(false);
+    setIsEditMode(true);
+    setAddModalOpen(true);
+  };
 
   const handleLockCounter = () => {
     if (openedCounter) {
@@ -175,6 +198,7 @@ export default function Home() {
         title={addName || "Add Counter"}
         onClose={() => {
           setAddModalOpen(false);
+          setIsEditMode(false);
         }}
       >
         <div className={styles.addModalContainer}>
@@ -188,15 +212,19 @@ export default function Home() {
             <input
               placeholder="Name"
               onChange={(e) => setAddName(e.target.value)}
+              value={addName}
               className="c-input"
             ></input>
             <input
               type="number"
               onChange={(e) => setAddStepSize(e.target.value)}
+              value={addStepSize}
               className="c-input"
               placeholder="1"
             ></input>
-            <button className="c-button">Add</button>
+            <button className="c-button">
+              {isEditMode ? "Update" : "Add"}
+            </button>
           </form>
           <div className={styles.stylePicker}>
             <ColorPicker
