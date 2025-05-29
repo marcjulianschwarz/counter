@@ -1,6 +1,6 @@
 import { Color, Icon } from "@/api/api";
 import styles from "./icon-icon.module.css";
-import { Car, House, Trees } from "lucide-react";
+import { Car, House, LockIcon, Trees } from "lucide-react";
 
 interface IconIconProps {
   icon: Icon;
@@ -16,6 +16,9 @@ export function IconIcon(props: IconIconProps) {
       break;
     case "house":
       iconView = <House width={20} height={20} />;
+      break;
+    case "lock":
+      iconView = <LockIcon width={20} height={20} />;
       break;
     default:
       iconView = <Trees width={20} height={20} />;

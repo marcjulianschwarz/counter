@@ -14,7 +14,7 @@ export function CounterView(props: CounterViewProps) {
 
   return (
     <div
-      className={`${styles.container} ${counter.color}-bg-base`}
+      className={`${styles.container} ${counter.color}-bg-base ${counter.locked ? styles.locked : ""}`}
       onClick={() => {
         props.onClick?.(counter);
       }}
@@ -23,7 +23,7 @@ export function CounterView(props: CounterViewProps) {
         {!counter.locked ? (
           <IconIcon icon={counter.icon} color={counter.color} />
         ) : (
-          <IconIcon icon={"house"} color={counter.color} />
+          <IconIcon icon={"lock"} color={counter.color} />
         )}
         <p>{counter.name}</p>
       </div>

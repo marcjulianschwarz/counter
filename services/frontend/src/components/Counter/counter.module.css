@@ -8,6 +8,10 @@
     position: relative;
 }
 
+.container.locked {
+    filter: brightness(0.5);
+}
+
 /* Only apply hover effects on devices that can actually hover */
 @media (hover: hover) and (pointer: fine) {
     .container:hover .delete {

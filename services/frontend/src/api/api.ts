@@ -13,4 +13,4 @@ export interface Settings {
 }
 
 export type Color = "red" | "green" | "blue" | "orange";
-export type Icon = "house" | "car";
+export type Icon = "house" | "car" | "lock";
