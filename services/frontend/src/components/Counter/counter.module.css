@@ -47,6 +47,10 @@
     display: none;
 }
 
+.delete > svg {
+    stroke: var(--uchu-yin-4);
+}
+
 .delete:hover {
     cursor: pointer;
     background-color: var(--uchu-yin-7);

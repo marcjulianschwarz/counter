@@ -49,6 +49,7 @@ a {
     background-color: var(--uchu-yin-8);
     font-size: var(--font-size-n);
     border-radius: 4px;
+    color: var(--foreground);
 }
 
 .c-input:focus {
@@ -67,6 +68,7 @@ a {
     background-color: var(--uchu-yin-8);
     font-size: var(--font-size-n);
     border-radius: 4px;
+    color: var(--foreground);
 }
 
 .c-button:focus {
