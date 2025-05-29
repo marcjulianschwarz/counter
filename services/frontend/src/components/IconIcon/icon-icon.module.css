@@ -1,0 +1,14 @@
+.container {
+    width: 35px;
+    height: 35px;
+    border-radius: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 5px;
+}
+
+.selected {
+    outline: 2px solid lightblue;
+    outline-offset: 3px;
+}

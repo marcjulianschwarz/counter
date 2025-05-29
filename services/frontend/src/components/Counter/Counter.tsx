@@ -1,6 +1,7 @@
 import { Counter } from "@/api/api";
 import styles from "./counter.module.css";
 import { XIcon } from "lucide-react";
+import { IconIcon } from "../IconIcon/IconIcon";
 
 interface CounterViewProps {
   counter: Counter;
@@ -12,12 +13,13 @@ export function CounterView(props: CounterViewProps) {
   const { counter } = props;
   return (
     <div
-      className={`${styles.container} ${counter.color}-counter`}
+      className={`${styles.container} ${counter.color}-bg-base`}
       onClick={() => {
         props.onClick?.(counter);
       }}
     >
       <div className={styles.left}>
+        <IconIcon icon={counter.icon} color={counter.color} />
         <p>{counter.name}</p>
       </div>
       <div className={styles.right}>

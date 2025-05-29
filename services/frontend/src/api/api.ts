@@ -1,8 +1,3 @@
-export interface Icon {
-  color: string;
-  id: string;
-}
-
 export interface Counter {
   id: string;
   name: string;
@@ -18,3 +13,4 @@ export interface Settings {
 }
 
 export type Color = "red" | "green" | "blue" | "orange";
+export type Icon = "house" | "car";

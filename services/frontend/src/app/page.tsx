@@ -3,10 +3,11 @@ import { CounterView } from "@/components/Counter/Counter";
 import styles from "./page.module.css";
 import Modal from "@/components/Modal/Modal";
 import { useState } from "react";
-import { Color, Counter } from "@/api/api";
+import { Color, Counter, Icon } from "@/api/api";
 import { MinusIcon, PlusIcon } from "lucide-react";
 import CounterButton from "@/components/CounterButton/CounterButton";
 import { ColorPicker } from "@/components/ColorPicker/ColorPicker";
+import { IconPicker } from "@/components/IconPicker/IconPicker";
 
 export default function Home() {
   const initialCounters: Counter[] = [
@@ -17,10 +18,7 @@ export default function Home() {
       count: 0,
       stepSize: 1,
       locked: false,
-      icon: {
-        id: "q",
-        color: "red",
-      },
+      icon: "car",
     },
     {
       name: "Häuser",
@@ -29,10 +27,7 @@ export default function Home() {
       count: 0,
       stepSize: 2,
       locked: false,
-      icon: {
-        id: "q",
-        color: "red",
-      },
+      icon: "house",
     },
     {
       name: "Bäume",
@@ -41,10 +36,7 @@ export default function Home() {
       count: 0,
       stepSize: 1,
       locked: false,
-      icon: {
-        id: "q",
-        color: "red",
-      },
+      icon: "house",
     },
     {
       name: "Bäume",
@@ -53,10 +45,7 @@ export default function Home() {
       count: 0,
       stepSize: 1,
       locked: false,
-      icon: {
-        id: "q",
-        color: "red",
-      },
+      icon: "car",
     },
   ];
 
@@ -66,6 +55,7 @@ export default function Home() {
   const [addName, setAddName] = useState("");
   const [addStepSize, setAddStepSize] = useState("");
   const [addColor, setAddColor] = useState<Color>("blue");
+  const [addIcon, setAddIcon] = useState<Icon>("car");
 
   const [openedCounter, setOpenedCounter] = useState<Counter>();
 
@@ -109,10 +99,7 @@ export default function Home() {
         name: addName,
         stepSize: parseInt(addStepSize),
         color: addColor,
-        icon: {
-          color: "red",
-          id: "hey",
-        },
+        icon: addIcon,
         locked: false,
         count: 0,
       },
@@ -190,7 +177,11 @@ export default function Home() {
               selectedColor={addColor}
               onSelect={setAddColor}
             />
-            <p>ICON PICKER</p>
+            <IconPicker
+              icons={["car", "house"]}
+              selectedIcon={addIcon}
+              onSelect={setAddIcon}
+            />
           </div>
         </div>
       </Modal>

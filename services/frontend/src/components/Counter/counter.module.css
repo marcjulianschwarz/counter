@@ -1,5 +1,5 @@
 .container {
-    height: 70px;
+    height: 85px;
     border-radius: 8px;
     display: flex;
     justify-content: space-between;
@@ -10,6 +10,13 @@
 
 .container:hover .delete {
     display: flex;
+}
+
+.left {
+    font-weight: bold;
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
 }
 
 .right {
