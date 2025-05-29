@@ -1,0 +1,10 @@
+.container {
+    width: 30px;
+    height: 30px;
+    border-radius: 100%;
+}
+
+.selected {
+    outline: 2px solid lightblue;
+    outline-offset: 3px;
+}

@@ -34,10 +34,25 @@
     width: 70px;
     height: 70px;
     border-radius: 100%;
+    background: none;
+    outline: none;
+    border: none;
+    background-color: rgba(255, 255, 255, 0.2);
+    border: 2px solid rgba(255, 255, 255, 0.3);
+    transition: 100ms cubic-bezier(0.23, 1, 0.32, 1);
+}
+
+.counterButtons > button > svg {
+    stroke: rgba(255, 255, 255, 0.7);
 }
 
 .counterButtons > button:hover {
     cursor: pointer;
+    scale: 1.05;
+}
+
+.counterButtons > button:active {
+    scale: 1.1;
 }
 
 .addForm {
@@ -45,4 +60,15 @@
     flex-direction: column;
     gap: 15px;
     width: fit-content;
+}
+
+.addModalContainer {
+    display: flex;
+    flex-direction: row;
+    gap: 20px;
+}
+
+.stylePicker {
+    display: flex;
+    gap: 30px;
 }

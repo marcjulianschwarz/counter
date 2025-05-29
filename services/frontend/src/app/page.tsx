@@ -3,9 +3,10 @@ import { CounterView } from "@/components/Counter/Counter";
 import styles from "./page.module.css";
 import Modal from "@/components/Modal/Modal";
 import { useState } from "react";
-import { Counter } from "@/api/api";
+import { Color, Counter } from "@/api/api";
 import { MinusIcon, PlusIcon } from "lucide-react";
 import CounterButton from "@/components/CounterButton/CounterButton";
+import { ColorPicker } from "@/components/ColorPicker/ColorPicker";
 
 export default function Home() {
   const initialCounters = [
@@ -64,6 +65,7 @@ export default function Home() {
   const [addModalOpen, setAddModalOpen] = useState(false);
   const [addName, setAddName] = useState("");
   const [addStepSize, setAddStepSize] = useState("");
+  const [addColor, setAddColor] = useState<Color>("blue");
 
   const [openedCounter, setOpenedCounter] = useState<Counter>();
 
@@ -106,7 +108,7 @@ export default function Home() {
         id: addName + new Date(),
         name: addName,
         stepSize: parseInt(addStepSize),
-        color: "red",
+        color: addColor,
         icon: {
           color: "red",
           id: "hey",
@@ -150,26 +152,36 @@ export default function Home() {
           setAddModalOpen(false);
         }}
       >
-        <form
-          className={styles.addForm}
-          onSubmit={(e) => {
-            e.preventDefault();
-            handleAddCounter();
-          }}
-        >
-          <input
-            placeholder="Name"
-            onChange={(e) => setAddName(e.target.value)}
-            className="c-input"
-          ></input>
-          <input
-            type="number"
-            onChange={(e) => setAddStepSize(e.target.value)}
-            className="c-input"
-            placeholder="1"
-          ></input>
-          <button className="c-button">Add</button>
-        </form>
+        <div className={styles.addModalContainer}>
+          <form
+            className={styles.addForm}
+            onSubmit={(e) => {
+              e.preventDefault();
+              handleAddCounter();
+            }}
+          >
+            <input
+              placeholder="Name"
+              onChange={(e) => setAddName(e.target.value)}
+              className="c-input"
+            ></input>
+            <input
+              type="number"
+              onChange={(e) => setAddStepSize(e.target.value)}
+              className="c-input"
+              placeholder="1"
+            ></input>
+            <button className="c-button">Add</button>
+          </form>
+          <div className={styles.stylePicker}>
+            <ColorPicker
+              colors={["blue", "green", "orange", "red"]}
+              selectedColor={addColor}
+              onSelect={setAddColor}
+            />
+            <p>ICON PICKER</p>
+          </div>
+        </div>
       </Modal>
 
       <div className={styles.container}>
