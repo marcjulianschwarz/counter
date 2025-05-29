@@ -5,9 +5,35 @@
     justify-content: space-between;
     align-items: center;
     padding: 20px;
+    position: relative;
+}
+
+.container:hover .delete {
+    display: flex;
 }
 
 .right {
     font-size: 25px;
     font-weight: bold;
+}
+
+.delete {
+    position: absolute;
+    top: -8px;
+    right: -8px;
+    width: 20px;
+    height: 20px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: var(--uchu-yin-9);
+    border: none;
+    border-radius: 100%;
+    padding: 3px;
+    display: none;
+}
+
+.delete:hover {
+    cursor: pointer;
+    background-color: var(--uchu-yin-7);
 }

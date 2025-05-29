@@ -122,6 +122,17 @@ export default function Home() {
     setAddStepSize("");
   };
 
+  const handleDeleteCounter = (counterToDelete: Counter) => {
+    setCounters(
+      counters.filter((counter) => counter.id !== counterToDelete.id),
+    );
+  };
+
+  const handleClickCounter = (counter: Counter) => {
+    setOpenedCounter(counter);
+    setModalOpen(true);
+  };
+
   return (
     <div className={styles.page}>
       <Modal
@@ -189,10 +200,8 @@ export default function Home() {
           <div key={counter.id} className={styles.counterItem}>
             <CounterView
               counter={counter}
-              onClick={() => {
-                setOpenedCounter(counter);
-                setModalOpen(true);
-              }}
+              onClick={handleClickCounter}
+              onDelete={handleDeleteCounter}
             />
           </div>
         ))}
