@@ -4,7 +4,7 @@ import styles from "./page.module.css";
 import Modal from "@/components/Modal/Modal";
 import { useState } from "react";
 import { Color, Counter, Icon } from "@/api/api";
-import { MinusIcon, PlusIcon } from "lucide-react";
+import { EditIcon, LockIcon, MinusIcon, PlusIcon } from "lucide-react";
 import CounterButton from "@/components/CounterButton/CounterButton";
 import { ColorPicker } from "@/components/ColorPicker/ColorPicker";
 import { IconPicker } from "@/components/IconPicker/IconPicker";
@@ -59,19 +59,23 @@ export default function Home() {
 
   const [openedCounter, setOpenedCounter] = useState<Counter>();
 
-  const updateCounter = (counterId: string, increment: boolean) => {
+  const updateCounter = (counterId: string, updates: Partial<Counter>) => {
     setCounters((prevCounters) =>
       prevCounters.map((counter) => {
-        if (counter.id === counterId && !counter.locked) {
-          const newCount = increment
-            ? counter.count + counter.stepSize
-            : Math.max(0, counter.count - counter.stepSize); // Prevent negative counts
+        if (counter.id === counterId) {
+          // Apply updates while preserving existing properties
+          const updatedCounter = { ...counter, ...updates };
 
-          const updatedCounter = { ...counter, count: newCount };
+          // Prevent negative counts if count is being updated
+          if ("count" in updates && updatedCounter.count < 0) {
+            updatedCounter.count = 0;
+          }
 
+          // Update openedCounter if it matches the current counter
           if (openedCounter?.id === counterId) {
             setOpenedCounter(updatedCounter);
           }
+
           return updatedCounter;
         }
         return counter;
@@ -80,14 +84,18 @@ export default function Home() {
   };
 
   const handlePlus = () => {
-    if (openedCounter) {
-      updateCounter(openedCounter.id, true);
+    if (openedCounter && !openedCounter.locked) {
+      updateCounter(openedCounter.id, {
+        count: openedCounter.count + openedCounter.stepSize,
+      });
     }
   };
 
   const handleMinus = () => {
-    if (openedCounter) {
-      updateCounter(openedCounter.id, false);
+    if (openedCounter && !openedCounter.locked) {
+      updateCounter(openedCounter.id, {
+        count: openedCounter.count - openedCounter.stepSize,
+      });
     }
   };
 
@@ -120,6 +128,16 @@ export default function Home() {
     setModalOpen(true);
   };
 
+  const handleEditCounter = () => {};
+
+  const handleLockCounter = () => {
+    if (openedCounter) {
+      updateCounter(openedCounter.id, {
+        locked: !openedCounter.locked,
+      });
+    }
+  };
+
   return (
     <div className={styles.page}>
       <Modal
@@ -133,10 +151,19 @@ export default function Home() {
         <div className={styles.counterModal}>
           <h1>{openedCounter?.count}</h1>
           <div className={styles.counterButtons}>
-            <button onClick={handleMinus}>
+            <button className={styles.counterButton} onClick={handleMinus}>
               <MinusIcon />
             </button>
-            <button onClick={handlePlus}>
+            <button
+              className={`${styles.lockButton} ${openedCounter?.locked ? styles.locked : ""}`}
+              onClick={handleLockCounter}
+            >
+              <LockIcon />
+            </button>
+            <button className={styles.editButton} onClick={handleEditCounter}>
+              <EditIcon />
+            </button>
+            <button className={styles.counterButton} onClick={handlePlus}>
               <PlusIcon />
             </button>
           </div>

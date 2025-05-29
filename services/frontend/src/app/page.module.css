@@ -26,13 +26,14 @@
 
 .counterButtons {
     display: flex;
-    justify-content: space-around;
+    justify-content: space-evenly;
+    align-items: center;
     width: 100%;
 }
 
-.counterButtons > button {
-    width: 70px;
-    height: 70px;
+.counterButton,
+.editButton,
+.lockButton {
     border-radius: 100%;
     background: none;
     outline: none;
@@ -42,17 +43,43 @@
     transition: 100ms cubic-bezier(0.23, 1, 0.32, 1);
 }
 
-.counterButtons > button > svg {
+.counterButton {
+    width: 70px;
+    height: 70px;
+}
+
+.editButton,
+.lockButton {
+    width: 40px;
+    height: 40px;
+}
+
+.counterButton > svg,
+.editButton > svg,
+.lockButton > svg {
     stroke: rgba(255, 255, 255, 0.7);
 }
 
-.counterButtons > button:hover {
+.counterButton:hover,
+.editButton:hover,
+.lockButton:hover {
     cursor: pointer;
     scale: 1.05;
 }
 
-.counterButtons > button:active {
+.counterButton:active,
+.editButton:active,
+.lockButton:active {
     scale: 1.1;
+}
+
+.lockButton.locked {
+    background-color: rgba(200, 0, 0, 0.3);
+    border-color: rgba(200, 0, 0, 1);
+}
+
+.lockButton.locked > svg {
+    stroke: rgba(220, 0, 0, 1);
 }
 
 .addForm {

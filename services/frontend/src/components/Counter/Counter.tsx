@@ -11,6 +11,7 @@ interface CounterViewProps {
 
 export function CounterView(props: CounterViewProps) {
   const { counter } = props;
+
   return (
     <div
       className={`${styles.container} ${counter.color}-bg-base`}
@@ -19,7 +20,11 @@ export function CounterView(props: CounterViewProps) {
       }}
     >
       <div className={styles.left}>
-        <IconIcon icon={counter.icon} color={counter.color} />
+        {!counter.locked ? (
+          <IconIcon icon={counter.icon} color={counter.color} />
+        ) : (
+          <IconIcon icon={"house"} color={counter.color} />
+        )}
         <p>{counter.name}</p>
       </div>
       <div className={styles.right}>
