@@ -9,48 +9,17 @@ import CounterButton from "@/components/CounterButton/CounterButton";
 import { ColorPicker } from "@/components/ColorPicker/ColorPicker";
 import { IconPicker } from "@/components/IconPicker/IconPicker";
 import { ExpandableFooter } from "@/components/ExpandableFooter/ExpandableFooter";
+import { useCounters } from "@/hooks/useCounters";
 
 export default function Home() {
-  const initialCounters: Counter[] = [
-    {
-      name: "Autos",
-      id: "test",
-      color: "green",
-      count: 0,
-      stepSize: 1,
-      locked: false,
-      icon: "car",
-    },
-    {
-      name: "Häuser",
-      id: "test2",
-      color: "red",
-      count: 0,
-      stepSize: 2,
-      locked: false,
-      icon: "house",
-    },
-    {
-      name: "Bäume",
-      id: "test3",
-      color: "blue",
-      count: 0,
-      stepSize: 1,
-      locked: false,
-      icon: "house",
-    },
-    {
-      name: "Bäume",
-      id: "test4",
-      color: "orange",
-      count: 0,
-      stepSize: 1,
-      locked: false,
-      icon: "car",
-    },
-  ];
+  const {
+    counters,
+    updateCounter,
+    addCounter,
+    deleteCounter,
+    deleteCallCounters,
+  } = useCounters();
 
-  const [counters, setCounters] = useState(initialCounters);
   const [modalOpen, setModalOpen] = useState(false);
   const [addModalOpen, setAddModalOpen] = useState(false);
   const [isEditMode, setIsEditMode] = useState(false);
@@ -59,32 +28,12 @@ export default function Home() {
   const [addColor, setAddColor] = useState<Color>("blue");
   const [addIcon, setAddIcon] = useState<Icon>("car");
 
-  const [openedCounter, setOpenedCounter] = useState<Counter>();
+  const [openedCounterId, setOpenedCounterId] = useState<string>();
   const [footerExpanded, setFooterExpanded] = useState(false);
 
-  const updateCounter = (counterId: string, updates: Partial<Counter>) => {
-    setCounters((prevCounters) =>
-      prevCounters.map((counter) => {
-        if (counter.id === counterId) {
-          // Apply updates while preserving existing properties
-          const updatedCounter = { ...counter, ...updates };
-
-          // Prevent negative counts if count is being updated
-          if ("count" in updates && updatedCounter.count < 0) {
-            updatedCounter.count = 0;
-          }
-
-          // Update openedCounter if it matches the current counter
-          if (openedCounter?.id === counterId) {
-            setOpenedCounter(updatedCounter);
-          }
-
-          return updatedCounter;
-        }
-        return counter;
-      }),
-    );
-  };
+  const openedCounter = openedCounterId
+    ? counters.find((counter) => counter.id === openedCounterId)
+    : undefined;
 
   const handlePlus = () => {
     if (openedCounter && !openedCounter.locked) {
@@ -113,18 +62,13 @@ export default function Home() {
         });
       }
     } else {
-      setCounters([
-        ...counters,
-        {
-          id: addName + new Date(),
-          name: addName,
-          stepSize: parseInt(addStepSize),
-          color: addColor,
-          icon: addIcon,
-          locked: false,
-          count: 0,
-        },
-      ]);
+      const stepsize = parseInt(addStepSize);
+      addCounter({
+        name: addName,
+        icon: addIcon,
+        color: addColor,
+        stepSize: isNaN(stepsize) ? 1 : stepsize,
+      });
     }
 
     setIsEditMode(false);
@@ -134,13 +78,11 @@ export default function Home() {
   };
 
   const handleDeleteCounter = (counterToDelete: Counter) => {
-    setCounters(
-      counters.filter((counter) => counter.id !== counterToDelete.id),
-    );
+    deleteCounter(counterToDelete.id);
   };
 
   const handleClickCounter = (counter: Counter) => {
-    setOpenedCounter(counter);
+    setOpenedCounterId(counter.id);
     setModalOpen(true);
   };
 
@@ -164,8 +106,8 @@ export default function Home() {
   };
 
   const handleDeleteAll = () => {
-    setCounters([]);
-    setOpenedCounter(undefined);
+    deleteCallCounters();
+    setOpenedCounterId(undefined);
     setModalOpen(false);
   };
 
