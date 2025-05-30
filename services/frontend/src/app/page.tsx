@@ -189,7 +189,7 @@ export default function Home() {
               icons={[
                 "car",
                 "house",
-                "lock",
+                "banana",
                 "camera",
                 "book",
                 "pencil",
@@ -198,6 +198,7 @@ export default function Home() {
                 "fish",
                 "lamp",
                 "mountain",
+                "sun",
               ]}
               selectedIcon={addIcon}
               onSelect={setAddIcon}
