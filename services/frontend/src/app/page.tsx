@@ -19,6 +19,7 @@ export default function Home() {
     addCounter,
     deleteCounter,
     deleteAllCounters,
+    deleteAllDemoCounters,
     addInitialCounters,
   } = useCounters();
 
@@ -224,14 +225,17 @@ export default function Home() {
         onExpand={() => setFooterExpanded(() => !footerExpanded)}
       >
         <div className={styles.settings}>
-          <button className="c-button" onClick={handleDeleteAll}>
-            Delete all data
-          </button>
           <button
             className="c-button"
             onClick={() => addInitialCounters(SAMPLE_COUNTERS)}
           >
             Add demo counters
+          </button>
+          <button className="c-button" onClick={deleteAllDemoCounters}>
+            Delete all demo counters
+          </button>
+          <button className="c-button" onClick={handleDeleteAll}>
+            Delete all data
           </button>
         </div>
       </ExpandableFooter>

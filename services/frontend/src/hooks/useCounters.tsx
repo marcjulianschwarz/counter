@@ -116,12 +116,19 @@ export function useCounters() {
     setCounters([]);
   }, []);
 
+  const deleteAllDemoCounters = useCallback(() => {
+    setCounters((prevCounters) =>
+      prevCounters.filter((counter) => !counter.id.includes("test")),
+    );
+  }, []);
+
   return {
     updateCounter,
     addCounter,
     addInitialCounters,
     deleteCounter,
     deleteAllCounters,
+    deleteAllDemoCounters,
     counters,
     isLoaded,
   };
