@@ -8,6 +8,7 @@ import { EditIcon, LockIcon, MinusIcon, PlusIcon } from "lucide-react";
 import CounterButton from "@/components/CounterButton/CounterButton";
 import { ColorPicker } from "@/components/ColorPicker/ColorPicker";
 import { IconPicker } from "@/components/IconPicker/IconPicker";
+import { ExpandableFooter } from "@/components/ExpandableFooter/ExpandableFooter";
 
 export default function Home() {
   const initialCounters: Counter[] = [
@@ -59,6 +60,7 @@ export default function Home() {
   const [addIcon, setAddIcon] = useState<Icon>("car");
 
   const [openedCounter, setOpenedCounter] = useState<Counter>();
+  const [footerExpanded, setFooterExpanded] = useState(false);
 
   const updateCounter = (counterId: string, updates: Partial<Counter>) => {
     setCounters((prevCounters) =>
@@ -266,6 +268,17 @@ export default function Home() {
         ))}
         <CounterButton onClick={() => setAddModalOpen(true)} />
       </div>
+
+      <ExpandableFooter
+        expanded={footerExpanded}
+        onExpand={() => setFooterExpanded(() => !footerExpanded)}
+      >
+        <h1>Hello</h1>
+        <h1>Hello</h1>
+        <h1>Hello</h1>
+        <h1>Hello</h1>
+        <h1>Hello</h1>
+      </ExpandableFooter>
     </div>
   );
 }
