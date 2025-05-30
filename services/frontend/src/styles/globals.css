@@ -1,5 +1,6 @@
 :root {
     --background: #1a1a1a;
+    --background-see-through: #1a1a1acc;
     --foreground: #eeeeee;
     --font-size-n: 1rem;
     --font-size-m: 1.2rem;

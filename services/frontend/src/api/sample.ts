@@ -12,7 +12,7 @@ export const SAMPLE_COUNTERS: Omit<Counter, "id">[] = [
   {
     name: "Häuser",
     color: "blue",
-    count: 0,
+    count: 4,
     stepSize: 1,
     locked: false,
     icon: "house",
@@ -28,7 +28,7 @@ export const SAMPLE_COUNTERS: Omit<Counter, "id">[] = [
   {
     name: "Berge",
     color: "orange",
-    count: 0,
+    count: 12,
     stepSize: 1,
     locked: false,
     icon: "mountain",
@@ -40,5 +40,21 @@ export const SAMPLE_COUNTERS: Omit<Counter, "id">[] = [
     stepSize: 1,
     locked: true,
     icon: "camera",
+  },
+  {
+    name: "Bananen",
+    color: "yellow",
+    count: 42,
+    stepSize: 1,
+    locked: true,
+    icon: "banana",
+  },
+  {
+    name: "Sonnen",
+    color: "red",
+    count: 1,
+    stepSize: 1,
+    locked: false,
+    icon: "sun",
   },
 ];
