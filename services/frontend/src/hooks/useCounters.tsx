@@ -96,15 +96,19 @@ export function useCounters() {
     ]);
   }, []);
 
-  const addInitialCounters = useCallback((initialCounters: Counter[]) => {
-    setCounters((prevCounters) => {
-      // Only add if no counters exist yet
-      if (prevCounters.length === 0) {
-        return initialCounters;
-      }
-      return prevCounters;
-    });
-  }, []);
+  const addInitialCounters = useCallback(
+    (initialCounters: Omit<Counter, "id">[]) => {
+      setCounters((prevCounters) => {
+        return [
+          ...prevCounters,
+          ...initialCounters.map((c) => {
+            return { ...c, id: "test" + generateUniqueId() };
+          }),
+        ];
+      });
+    },
+    [],
+  );
 
   const deleteCounter = useCallback((counterId: string) => {
     setCounters((prevCounters) =>

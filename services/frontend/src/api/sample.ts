@@ -1,9 +1,8 @@
 import { Counter } from "./api";
 
-export const SAMPLE_COUNTERS: Counter[] = [
+export const SAMPLE_COUNTERS: Omit<Counter, "id">[] = [
   {
     name: "Autos",
-    id: "test",
     color: "green",
     count: 0,
     stepSize: 1,
@@ -12,7 +11,6 @@ export const SAMPLE_COUNTERS: Counter[] = [
   },
   {
     name: "Häuser",
-    id: "test2",
     color: "blue",
     count: 0,
     stepSize: 1,
@@ -21,7 +19,6 @@ export const SAMPLE_COUNTERS: Counter[] = [
   },
   {
     name: "Bäume",
-    id: "test3",
     color: "green",
     count: 0,
     stepSize: 1,
@@ -30,7 +27,6 @@ export const SAMPLE_COUNTERS: Counter[] = [
   },
   {
     name: "Berge",
-    id: "test4",
     color: "orange",
     count: 0,
     stepSize: 1,
@@ -39,7 +35,6 @@ export const SAMPLE_COUNTERS: Counter[] = [
   },
   {
     name: "Kameras",
-    id: "test5",
     color: "purple",
     count: 0,
     stepSize: 1,

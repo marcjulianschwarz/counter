@@ -231,10 +231,10 @@ export default function Home() {
           >
             Add demo counters
           </button>
-          <button className="c-button" onClick={deleteAllDemoCounters}>
+          <button className="c-button danger" onClick={deleteAllDemoCounters}>
             Delete all demo counters
           </button>
-          <button className="c-button" onClick={handleDeleteAll}>
+          <button className="c-button danger" onClick={handleDeleteAll}>
             Delete all data
           </button>
         </div>

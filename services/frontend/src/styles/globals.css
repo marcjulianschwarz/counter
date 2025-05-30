@@ -79,3 +79,8 @@ a {
     outline: 1px solid var(--uchu-yin-5);
     cursor: pointer;
 }
+
+.c-button.danger {
+    color: oklch(100% 0.1 25);
+    background-color: oklch(40% 0.12 25);
+}
