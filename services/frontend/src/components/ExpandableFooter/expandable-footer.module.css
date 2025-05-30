@@ -11,8 +11,8 @@
     ); /* Adjust 90px to your expander height */
     transition: transform 100ms ease-out;
     background-color: var(--background-see-through);
-    backdrop-filter: blur(20px);
-    -webkit-backdrop-filter: blur(20px);
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
     border-top: 1px solid rgba(255, 255, 255, 0.2);
 }
 
