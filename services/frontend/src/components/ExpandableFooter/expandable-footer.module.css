@@ -7,9 +7,10 @@
     flex-direction: column;
     align-items: center;
     transform: translateY(
-        calc(100% - 90px)
+        calc(100% - 100px)
     ); /* Adjust 90px to your expander height */
     transition: transform 300ms ease-out;
+    background-color: var(--background);
 }
 
 .expander {
@@ -34,7 +35,8 @@
 
 .content {
     width: 100%;
-    padding: 30px;
+    padding-left: 20px;
+    padding-bottom: 20px;
 }
 
 .container.expanded {

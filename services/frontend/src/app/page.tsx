@@ -163,6 +163,12 @@ export default function Home() {
     }
   };
 
+  const handleDeleteAll = () => {
+    setCounters([]);
+    setOpenedCounter(undefined);
+    setModalOpen(false);
+  };
+
   return (
     <div className={styles.page}>
       <Modal
@@ -273,11 +279,9 @@ export default function Home() {
         expanded={footerExpanded}
         onExpand={() => setFooterExpanded(() => !footerExpanded)}
       >
-        <h1>Hello</h1>
-        <h1>Hello</h1>
-        <h1>Hello</h1>
-        <h1>Hello</h1>
-        <h1>Hello</h1>
+        <button className="c-button" onClick={handleDeleteAll}>
+          Delete all data
+        </button>
       </ExpandableFooter>
     </div>
   );

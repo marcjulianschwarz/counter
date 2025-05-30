@@ -1,4 +1,4 @@
-import { ChevronsUp } from "lucide-react";
+import { ChevronsDown, ChevronsUp } from "lucide-react";
 import styles from "./expandable-footer.module.css";
 
 interface ExpandableFooterProps {
@@ -14,7 +14,7 @@ export function ExpandableFooter(props: ExpandableFooterProps) {
     >
       <div className={styles.expander}>
         <button className={styles.expanderButton} onClick={props.onExpand}>
-          <ChevronsUp />
+          {props.expanded ? <ChevronsDown /> : <ChevronsUp />}
           <p>Settings</p>
         </button>
       </div>
