@@ -223,15 +223,17 @@ export default function Home() {
         expanded={footerExpanded}
         onExpand={() => setFooterExpanded(() => !footerExpanded)}
       >
-        <button className="c-button" onClick={handleDeleteAll}>
-          Delete all data
-        </button>
-        <button
-          className="c-button"
-          onClick={() => addInitialCounters(SAMPLE_COUNTERS)}
-        >
-          Add demo counters
-        </button>
+        <div className={styles.settings}>
+          <button className="c-button" onClick={handleDeleteAll}>
+            Delete all data
+          </button>
+          <button
+            className="c-button"
+            onClick={() => addInitialCounters(SAMPLE_COUNTERS)}
+          >
+            Add demo counters
+          </button>
+        </div>
       </ExpandableFooter>
     </div>
   );
