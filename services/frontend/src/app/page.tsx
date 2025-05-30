@@ -10,6 +10,7 @@ import { ColorPicker } from "@/components/ColorPicker/ColorPicker";
 import { IconPicker } from "@/components/IconPicker/IconPicker";
 import { ExpandableFooter } from "@/components/ExpandableFooter/ExpandableFooter";
 import { useCounters } from "@/hooks/useCounters";
+import { SAMPLE_COUNTERS } from "@/api/sample";
 
 export default function Home() {
   const {
@@ -17,7 +18,8 @@ export default function Home() {
     updateCounter,
     addCounter,
     deleteCounter,
-    deleteCallCounters,
+    deleteAllCounters,
+    addInitialCounters,
   } = useCounters();
 
   const [modalOpen, setModalOpen] = useState(false);
@@ -106,7 +108,7 @@ export default function Home() {
   };
 
   const handleDeleteAll = () => {
-    deleteCallCounters();
+    deleteAllCounters();
     setOpenedCounterId(undefined);
     setModalOpen(false);
   };
@@ -223,6 +225,12 @@ export default function Home() {
       >
         <button className="c-button" onClick={handleDeleteAll}>
           Delete all data
+        </button>
+        <button
+          className="c-button"
+          onClick={() => addInitialCounters(SAMPLE_COUNTERS)}
+        >
+          Add demo counters
         </button>
       </ExpandableFooter>
     </div>
