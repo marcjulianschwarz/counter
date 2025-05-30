@@ -238,6 +238,17 @@ export default function Home() {
             Delete all data
           </button>
         </div>
+        <br></br>
+        <p>
+          Inspired by{" "}
+          <a
+            className={styles.counterLink}
+            href="https://apps.apple.com/de/app/alltagsz%C3%A4hler/id1515808968"
+          >
+            Alltagszähler
+          </a>{" "}
+          💙
+        </p>
       </ExpandableFooter>
     </div>
   );

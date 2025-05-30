@@ -108,3 +108,11 @@
     align-items: stretch;
     max-width: fit-content;
 }
+
+.counterLink {
+    color: var(--c-blue-light);
+}
+
+.counterLink:hover {
+    text-decoration: underline;
+}
