@@ -2,7 +2,7 @@ import styles from "./app.module.css";
 import Modal from "@/components/Modal/Modal";
 import { useState } from "react";
 import type { Color, Counter, Icon } from "@/api/api";
-import { EditIcon, LockIcon, MinusIcon, PlusIcon } from "lucide-react";
+import { EditIcon, LockIcon, MinusIcon, MoonIcon, PlusIcon, SunIcon } from "lucide-react";
 import CounterButton from "@/components/CounterButton/CounterButton";
 import { ColorPicker } from "@/components/ColorPicker/ColorPicker";
 import { IconPicker } from "@/components/IconPicker/IconPicker";
@@ -10,8 +10,10 @@ import { ExpandableFooter } from "@/components/ExpandableFooter/ExpandableFooter
 import { useCounters } from "@/hooks/useCounters";
 import { SAMPLE_COUNTERS } from "@/api/sample";
 import { CounterView } from "@/components/Counter/Counter";
+import { useTheme } from "@/hooks/useTheme";
 
 export default function App() {
+  const { theme, toggle: toggleTheme } = useTheme();
   const {
     counters,
     updateCounter,
@@ -225,6 +227,10 @@ export default function App() {
         onExpand={() => setFooterExpanded(() => !footerExpanded)}
       >
         <div className={styles.settings}>
+          <button className={`c-button ${styles.themeToggle}`} onClick={toggleTheme}>
+            {theme === "dark" ? <SunIcon size={16} /> : <MoonIcon size={16} />}
+            {theme === "dark" ? "Light mode" : "Dark mode"}
+          </button>
           <button
             className="c-button"
             onClick={() => addInitialCounters(SAMPLE_COUNTERS)}

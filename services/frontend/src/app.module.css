@@ -121,3 +121,9 @@
 .counterLink:hover {
     text-decoration: underline;
 }
+
+.themeToggle {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}

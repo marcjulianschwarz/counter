@@ -194,12 +194,12 @@
     background: radial-gradient(
         circle 500px at center 10%,
         oklch(
-                calc(var(--c-red-lightness) - 50%) var(--c-red-chroma)
+                calc(var(--c-red-lightness) - 25%) var(--c-red-chroma)
                     var(--c-red-hue)
             )
             0%,
         oklch(
-                calc(var(--c-red-lightness) - 20%) var(--c-red-chroma)
+                calc(var(--c-red-lightness) - 10%) var(--c-red-chroma)
                     var(--c-red-hue)
             )
             100%
@@ -210,12 +210,12 @@
     background: radial-gradient(
         circle 500px at center 10%,
         oklch(
-                calc(var(--c-green-lightness) - 50%) var(--c-green-chroma)
+                calc(var(--c-green-lightness) - 25%) var(--c-green-chroma)
                     var(--c-green-hue)
             )
             0%,
         oklch(
-                calc(var(--c-green-lightness) - 20%) var(--c-green-chroma)
+                calc(var(--c-green-lightness) - 10%) var(--c-green-chroma)
                     var(--c-green-hue)
             )
             100%
@@ -226,12 +226,12 @@
     background: radial-gradient(
         circle 500px at center 10%,
         oklch(
-                calc(var(--c-blue-lightness) - 50%) var(--c-blue-chroma)
+                calc(var(--c-blue-lightness) - 25%) var(--c-blue-chroma)
                     var(--c-blue-hue)
             )
             0%,
         oklch(
-                calc(var(--c-blue-lightness) - 20%) var(--c-blue-chroma)
+                calc(var(--c-blue-lightness) - 10%) var(--c-blue-chroma)
                     var(--c-blue-hue)
             )
             100%
@@ -242,12 +242,12 @@
     background: radial-gradient(
         circle 500px at center 10%,
         oklch(
-                calc(var(--c-orange-lightness) - 50%) var(--c-orange-chroma)
+                calc(var(--c-orange-lightness) - 25%) var(--c-orange-chroma)
                     var(--c-orange-hue)
             )
             0%,
         oklch(
-                calc(var(--c-orange-lightness) - 20%) var(--c-orange-chroma)
+                calc(var(--c-orange-lightness) - 10%) var(--c-orange-chroma)
                     var(--c-orange-hue)
             )
             100%
@@ -258,12 +258,12 @@
     background: radial-gradient(
         circle 500px at center 10%,
         oklch(
-                calc(var(--c-yellow-lightness) - 50%) var(--c-yellow-chroma)
+                calc(var(--c-yellow-lightness) - 25%) var(--c-yellow-chroma)
                     var(--c-yellow-hue)
             )
             0%,
         oklch(
-                calc(var(--c-yellow-lightness) - 20%) var(--c-yellow-chroma)
+                calc(var(--c-yellow-lightness) - 10%) var(--c-yellow-chroma)
                     var(--c-yellow-hue)
             )
             100%
@@ -274,12 +274,12 @@
     background: radial-gradient(
         circle 500px at center 10%,
         oklch(
-                calc(var(--c-purple-lightness) - 50%) var(--c-purple-chroma)
+                calc(var(--c-purple-lightness) - 25%) var(--c-purple-chroma)
                     var(--c-purple-hue)
             )
             0%,
         oklch(
-                calc(var(--c-purple-lightness) - 20%) var(--c-purple-chroma)
+                calc(var(--c-purple-lightness) - 10%) var(--c-purple-chroma)
                     var(--c-purple-hue)
             )
             100%

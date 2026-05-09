@@ -13,7 +13,7 @@
     background-color: var(--background-see-through);
     backdrop-filter: blur(10px);
     -webkit-backdrop-filter: blur(10px);
-    border-top: 1px solid rgba(255, 255, 255, 0.2);
+    border-top: 1px solid var(--uchu-yin-7);
 }
 
 .expander {

@@ -9,7 +9,8 @@
 }
 
 .container.locked {
-    filter: brightness(0.5);
+    filter: brightness(0.75) saturate(0.6);
+    opacity: 0.6;
 }
 
 /* Only apply hover effects on devices that can actually hover */
