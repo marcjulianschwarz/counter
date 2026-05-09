@@ -1,9 +1,7 @@
-"use client";
-import { CounterView } from "@/components/Counter/Counter";
-import styles from "./page.module.css";
+import styles from "./app.module.css";
 import Modal from "@/components/Modal/Modal";
 import { useState } from "react";
-import { Color, Counter, Icon } from "@/api/api";
+import type { Color, Counter, Icon } from "@/api/api";
 import { EditIcon, LockIcon, MinusIcon, PlusIcon } from "lucide-react";
 import CounterButton from "@/components/CounterButton/CounterButton";
 import { ColorPicker } from "@/components/ColorPicker/ColorPicker";
@@ -11,8 +9,9 @@ import { IconPicker } from "@/components/IconPicker/IconPicker";
 import { ExpandableFooter } from "@/components/ExpandableFooter/ExpandableFooter";
 import { useCounters } from "@/hooks/useCounters";
 import { SAMPLE_COUNTERS } from "@/api/sample";
+import { CounterView } from "@/components/Counter/Counter";
 
-export default function Home() {
+export default function App() {
   const {
     counters,
     updateCounter,

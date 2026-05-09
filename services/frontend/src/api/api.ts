@@ -1,5 +1,3 @@
-import { IconName } from "lucide-react/dynamic";
-
 export interface Counter {
   id: string;
   name: string;
@@ -15,4 +13,18 @@ export interface Settings {
 }
 
 export type Color = "red" | "green" | "blue" | "orange" | "yellow" | "purple";
-export type Icon = IconName;
+export type Icon =
+  | "car"
+  | "house"
+  | "banana"
+  | "camera"
+  | "book"
+  | "pencil"
+  | "trees"
+  | "ruler"
+  | "fish"
+  | "lamp"
+  | "mountain"
+  | "sun"
+  | "lock"
+  | "star";

@@ -1,4 +1,4 @@
-import { Color } from "@/api/api";
+import type { Color } from "@/api/api";
 import styles from "./color-icon.module.css";
 
 interface ColorIconProps {

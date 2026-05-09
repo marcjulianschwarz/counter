@@ -1,4 +1,4 @@
-import { Color, Icon } from "@/api/api";
+import type { Color, Icon } from "@/api/api";
 import styles from "./icon-picker.module.css";
 import { IconIcon } from "../IconIcon/IconIcon";
 

@@ -1,4 +1,4 @@
-import { Counter } from "./api";
+import type { Counter } from "./api";
 
 export const SAMPLE_COUNTERS: Omit<Counter, "id">[] = [
   {

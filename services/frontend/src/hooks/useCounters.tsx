@@ -1,5 +1,4 @@
-"use client";
-import { Counter } from "@/api/api";
+import type { Counter } from "@/api/api";
 import { useCallback, useState, useEffect } from "react";
 
 const STORAGE_KEY = "counters";
@@ -10,9 +9,6 @@ type AddCounterDto = Partial<
   Required<Pick<Counter, "name">>;
 
 function loadCountersFromStorage(): Counter[] {
-  if (typeof window === "undefined") {
-    return [];
-  }
   try {
     const stored = localStorage.getItem(STORAGE_KEY);
     if (stored) {
@@ -26,9 +22,6 @@ function loadCountersFromStorage(): Counter[] {
 }
 
 function saveCountersToStorage(counters: Counter[]): void {
-  if (typeof window === "undefined") {
-    return;
-  }
   try {
     localStorage.setItem(STORAGE_KEY, JSON.stringify(counters));
   } catch (error) {

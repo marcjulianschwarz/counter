@@ -3,6 +3,6 @@ services:
     build:
       context: ./services/frontend
     ports:
-      - "8051:3000"
+      - "8061:3000"
     environment:
       - NODE_ENV=${NODE_ENV}

@@ -1,4 +1,4 @@
-import { Counter } from "@/api/api";
+import type { Counter } from "@/api/api";
 import styles from "./counter.module.css";
 import { XIcon } from "lucide-react";
 import { IconIcon } from "../IconIcon/IconIcon";

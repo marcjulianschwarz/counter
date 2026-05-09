@@ -1,6 +1,6 @@
 import styles from "./color-picker.module.css";
 import { ColorIcon } from "../ColorIcon/ColorIcon";
-import { Color } from "@/api/api";
+import type { Color } from "@/api/api";
 
 interface ColorPickerProps {
   colors: Color[];
